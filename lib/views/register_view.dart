@@ -1,8 +1,7 @@
-import 'dart:developer' as devtools show log;
-
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:mynotes/constants/routes.dart';
+import 'package:mynotes/utilities/show_error_dialog.dart';
 
 class RegisterView extends StatefulWidget {
   const RegisterView({Key? key}) : super(key: key);
@@ -62,23 +61,32 @@ class _RegisterViewState extends State<RegisterView> {
               final password = _password.text;
 
               try {
-                final userCredential = await FirebaseAuth.instance
-                    .createUserWithEmailAndPassword(
-                        email: email, password: password);
-                devtools.log("credential: $userCredential");
+                await FirebaseAuth.instance.createUserWithEmailAndPassword(
+                  email: email,
+                  password: password,
+                );
               } on FirebaseAuthException catch (e) {
                 if (e.code == "email-already-in-use") {
-                  devtools.log(
-                      "An account is already registered with this email");
+                  await showErrorDialog(
+                    context,
+                    "This email is already in use. Try registering with a different email",
+                  );
                 } else if (e.code == "invalid-email") {
-                  devtools.log("The entered email is invalid");
+                  await showErrorDialog(
+                    context,
+                    "Invalid email entered",
+                  );
                 } else {
-                  devtools.log(
-                      "Error in runtime of ${e.runtimeType}: ${e.toString()}");
+                  await showErrorDialog(
+                    context,
+                    "Error: ${e.code}",
+                  );
                 }
               } catch (e) {
-                devtools.log(
-                    "Error in runtime of ${e.runtimeType}: ${e.toString()}");
+                await showErrorDialog(
+                  context,
+                  e.toString(),
+                );
               }
             },
             child: const Text(
