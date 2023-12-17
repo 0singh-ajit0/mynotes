@@ -1,3 +1,5 @@
+import 'dart:developer' as devtools show log;
+
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 
@@ -62,19 +64,19 @@ class _RegisterViewState extends State<RegisterView> {
                 final userCredential = await FirebaseAuth.instance
                     .createUserWithEmailAndPassword(
                         email: email, password: password);
-                debugPrint("credential: $userCredential");
+                devtools.log("credential: $userCredential");
               } on FirebaseAuthException catch (e) {
                 if (e.code == "email-already-in-use") {
-                  debugPrint(
+                  devtools.log(
                       "An account is already registered with this email");
                 } else if (e.code == "invalid-email") {
-                  debugPrint("The entered email is invalid");
+                  devtools.log("The entered email is invalid");
                 } else {
-                  debugPrint(
+                  devtools.log(
                       "Error in runtime of ${e.runtimeType}: ${e.toString()}");
                 }
               } catch (e) {
-                debugPrint(
+                devtools.log(
                     "Error in runtime of ${e.runtimeType}: ${e.toString()}");
               }
             },
