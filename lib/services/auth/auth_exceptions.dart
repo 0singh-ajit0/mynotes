@@ -10,8 +10,8 @@ class WeakPasswordAuthException implements Exception {}
 
 class EmailAlreadyInUseAuthException implements Exception {}
 
-class InvalidEmailAuthException
-    implements Exception {} // Common to both register and login
+// Common to both register and login
+class InvalidEmailAuthException implements Exception {}
 
 // Generic exceptions
 class GenericAuthException implements Exception {}
