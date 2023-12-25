@@ -16,7 +16,7 @@ import 'package:mynotes/views/login_view.dart';
 void main() {
   WidgetsFlutterBinding.ensureInitialized();
   runApp(MaterialApp(
-    title: "Flutter Demo",
+    title: "My Notes",
     theme: ThemeData(useMaterial3: true),
     home: BlocProvider<AuthBloc>(
       create: (context) => AuthBloc(FirebaseAuthProvider()),
