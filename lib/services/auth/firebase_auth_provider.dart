@@ -108,4 +108,19 @@ class FirebaseAuthProvider extends AuthProvider {
       throw UserNotLoggedInAuthException();
     }
   }
+
+  @override
+  Future<void> sendPasswordReset({required String toEmail}) async {
+    try {
+      await FirebaseAuth.instance.sendPasswordResetEmail(email: toEmail);
+    } on FirebaseAuthException catch (e) {
+      if (e.code == "firebase_auth/invalid-email") {
+        throw InvalidEmailAuthException();
+      } else if (e.code == "firebase_auth/user-not-found") {
+        throw UserNotFoundAuthException();
+      }
+    } catch (_) {
+      throw GenericAuthException();
+    }
+  }
 }
