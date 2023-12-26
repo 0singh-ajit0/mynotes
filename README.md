@@ -1,16 +1,13 @@
-# mynotes
+# MyNotes
 
-A new Flutter project.
+A cross-platform app for saving notes securely on cloud. It uses material-ui3 for its UI and firebase as its backend for saving the notes.
 
 ## Getting Started
 
-This project is a starting point for a Flutter application.
-
-A few resources to get you started if this is your first Flutter project:
-
-- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
-
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+- Register yourself as a user using your email and a strong password.
+- Verify your email by clicking on the link sent to your email.
+- Login with your credentials.
+- In case you forgot your password, use the forgot password functionality provided in the login screen.
+- Create your notes by clicking on the "plus" icon button on top right.
+- Share them with the share button on top right after opening that note.
+- Edit your notes by clicking on a specific note.
