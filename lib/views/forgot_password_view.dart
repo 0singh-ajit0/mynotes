@@ -38,8 +38,12 @@ class _ForgotPasswordViewState extends State<ForgotPasswordView> {
             await showPasswordResetEmailSentDialog(context);
           }
           if (state.exception != null) {
-            await showErrorDialog(context,
-                "We could not process your request. Please make sure you are registered with the email provided. If not registered, register a user by going back one step.");
+            if (context.mounted) {
+              await showErrorDialog(
+                context,
+                "We could not process your request. Please make sure you are registered with the email provided. If not registered, register a user by going back one step.",
+              );
+            }
           }
         }
       },

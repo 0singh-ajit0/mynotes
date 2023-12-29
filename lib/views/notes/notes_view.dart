@@ -36,17 +36,20 @@ class _NotesViewState extends State<NotesView> {
         elevation: 4,
         actions: [
           IconButton(
-              onPressed: () {
-                Navigator.of(context).pushNamed(createOrUpdateNoteRoute);
-              },
-              icon: const Icon(Icons.add)),
+            onPressed: () {
+              Navigator.of(context).pushNamed(createOrUpdateNoteRoute);
+            },
+            icon: const Icon(Icons.add),
+          ),
           PopupMenuButton<MenuAction>(
             onSelected: (value) async {
               switch (value) {
                 case MenuAction.logout:
                   final shouldLogout = await showLogoutDialog(context);
                   if (shouldLogout) {
-                    context.read<AuthBloc>().add(const AuthEventLogout());
+                    if (context.mounted) {
+                      context.read<AuthBloc>().add(const AuthEventLogout());
+                    }
                   }
                   break;
               }
