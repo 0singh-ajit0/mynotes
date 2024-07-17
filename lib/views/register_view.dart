@@ -75,6 +75,9 @@ class _RegisterViewState extends State<RegisterView> {
                   decoration: const InputDecoration(
                     hintText: "Enter your email",
                   ),
+                  autofillHints: const [
+                    AutofillHints.email,
+                  ],
                 ),
                 TextField(
                   controller: _password,
@@ -84,6 +87,9 @@ class _RegisterViewState extends State<RegisterView> {
                   decoration: const InputDecoration(
                     hintText: "Enter your password",
                   ),
+                  autofillHints: const [
+                    AutofillHints.password,
+                  ],
                 ),
                 const SizedBox(
                   height: 10.0,

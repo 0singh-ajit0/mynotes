@@ -67,6 +67,9 @@ class _ForgotPasswordViewState extends State<ForgotPasswordView> {
                   decoration: const InputDecoration(
                     hintText: "Your email address...",
                   ),
+                  autofillHints: const [
+                    AutofillHints.email,
+                  ],
                 ),
                 const SizedBox(
                   height: 10.0,
