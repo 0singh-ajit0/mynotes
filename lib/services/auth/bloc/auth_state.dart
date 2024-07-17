@@ -1,6 +1,7 @@
 import 'package:equatable/equatable.dart';
 import 'package:flutter/foundation.dart' show immutable;
 import 'package:flutter/material.dart';
+
 import 'package:mynotes/services/auth/auth_user.dart';
 
 @immutable
